@@ -1,9 +1,9 @@
 
-
-
+import { Button } from "@/components/ui/button";
+import {ArrowRight} from "lucide-react"
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-950 text-white">
       <main className=" flex-1">
         <section className="container mx-auto px-auto py-32">
           <div  className = "mx-auto max-w-4xl text-center ">
@@ -18,8 +18,10 @@ export default function Home() {
           </div>
 
           <div  className = " flex flex-col items-center gap-4">
-            <button>Start for Free</button>
-            <p>Free Forver No credit card required</p>
+            <Button size="lg" >Start for Free<ArrowRight className="ml-1 h-4 w-4" /></Button>
+            <p className="text-sm text-muted-foreground">
+              Free Forver No credit card required
+            </p>
           </div>
         </section>
       </main>
