@@ -1,13 +1,13 @@
-
 import { Button } from "@/components/ui/button";
-import {ArrowRight} from "lucide-react"
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-950 text-white">
       <main className=" flex-1">
         <section className="container mx-auto px-auto py-32">
-          <div  className = "mx-auto max-w-4xl text-center ">
-          
+          <div className="mx-auto max-w-4xl text-center ">
             <h1 className="text-6xl font-bold mb-6 ">
               A Better Way to Track Your Application
             </h1>
@@ -17,8 +17,16 @@ export default function Home() {
             </p>
           </div>
 
-          <div  className = " flex flex-col items-center gap-4">
-            <Button size="lg" >Start for Free<ArrowRight className="ml-1 h-4 w-4" /></Button>
+          <div className=" flex flex-col items-center gap-4">
+            <Link href="/sign-up">
+              <Button
+                size="lg"
+                className="rounded-2xl h-12 cursor-pointer px-4 text-lg text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]"
+              >
+                Start for Free
+                <ArrowRight className="ml-1 h-4 w-4 " />
+              </Button>
+            </Link>
             <p className="text-sm text-muted-foreground">
               Free Forver No credit card required
             </p>
