@@ -1,8 +1,14 @@
+
+
+import ImageTab from "@/components/image-tab";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+
 export default function Home() {
+  
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-950 text-white">
       <main className=" flex-1">
@@ -21,7 +27,7 @@ export default function Home() {
             <Link href="/sign-up">
               <Button
                 size="lg"
-                className="rounded-2xl h-12 cursor-pointer px-4 text-lg text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]"
+                className="rounded-2xl bg-white/10 h-12 cursor-pointer px-4 text-lg text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]"
               >
                 Start for Free
                 <ArrowRight className="ml-1 h-4 w-4 " />
@@ -32,6 +38,10 @@ export default function Home() {
             </p>
           </div>
         </section>
+        {/* Image Tab  for the showing the different features */}
+        <ImageTab />
+
+       
       </main>
     </div>
   );
