@@ -122,9 +122,9 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
+ body {
+  @apply min-h-screen bg-gray-950 text-white;
+}
   html {
     @apply font-sans;
   }
