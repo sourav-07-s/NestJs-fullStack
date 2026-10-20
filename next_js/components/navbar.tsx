@@ -4,7 +4,7 @@ import favicon from "../app/J-favicon.png";
 
 export default function Navbar() {
   return (
-   <nav className="fixed top-0 left-2 right-2 z-50 mx-2 mt-4 rounded-full border border-white/10 bg-gray-800/90 px-6 py-2 shadow-lg backdrop-blur-xl">
+   <nav className=" fixed top-0 left-2 right-2 z-50 mx-2 mt-4 rounded-full border border-white/10 bg-gray-800/90 px-6 py-2 shadow-lg backdrop-blur-xl">
       <div className="flex items-center justify-between">
         <Link
           href="/"

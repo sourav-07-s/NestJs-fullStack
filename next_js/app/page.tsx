@@ -10,7 +10,7 @@ export default function Home() {
   
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-950 text-white">
+    <div className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-900 text-white">
       <main className=" flex-1">
         <section className="container mx-auto px-auto py-32">
           <div className="mx-auto max-w-4xl text-center ">

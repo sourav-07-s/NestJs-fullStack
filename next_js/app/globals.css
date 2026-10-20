@@ -123,7 +123,7 @@
     @apply border-border outline-ring/50;
   }
  body {
-  @apply min-h-screen bg-gray-950 text-white;
+  @apply min-h-screen bg-gray-900 text-white;
 }
   html {
     @apply font-sans;
