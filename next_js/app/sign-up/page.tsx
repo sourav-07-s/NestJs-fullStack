@@ -32,41 +32,48 @@ export default function SignUpPage() {
 
 
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+ async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
 
-    setError("");
-    setLoading(true);
+  setError("");
+  setLoading(true);
 
-    try {
-     const result = await signUp.email({
-        name,
-        email,
-        password,
-     })
-  
-       if(result.error){
-        setError(result.error.message ?? "Failed to sign up");
-       }
-       else{
-        router.push("/dashboard");
-       }
+  try {
+    const result = await signUp.email({
+      name,
+      email,
+      password,
+    });
 
+    console.log("Signup result:", result);
+    console.log("Signup error:", result.error);
 
-    } catch (err) {
-      setError("An unexpected error occurred");
-    } finally {
-      setLoading(false);
+    if (result.error) {
+      setError(
+        result.error.message || `Signup failed (status: ${result.error.status})`
+      );
+      return;
     }
-  }
 
+    router.push("/dashboard");
+    router.refresh();
+  } catch (err) {
+    console.error("Signup exception:", err);
+
+    setError(
+      err instanceof Error ? err.message : "Unexpected signup error"
+    );
+  } finally {
+    setLoading(false);
+  }
+}
 
 
    return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-gray-900 p-4">
-      <Card className="w-full max-w-md bg-gray-700  border-gray-200 shadow-lg rounded-2xl">
+      <Card className="w-full max-w-md bg-gray-800  border-gray-200 shadow-lg rounded-2xl">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-black">
+          <CardTitle className="text-2xl font-bold text-gray-100">
             Sign Up
           </CardTitle>
           <CardDescription className="text-gray-100">
@@ -76,7 +83,7 @@ export default function SignUpPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <CardContent className="space-y-4">
             {error && (
-              <div className="rounded-md bg-destructive/15 p-3 text-sm text-destructive">
+              <div className="rounded-lg w-full bg-destructive/25 p-3 text-sm text-destructive">
                 {error}
               </div>
             )}
@@ -91,7 +98,7 @@ export default function SignUpPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="border-gray-300 focus:border-primary focus:ring-primary"
+                className="border-gray-300 focus:border-primary focus:ring-primary target:text-white"
               />
             </div>
             <div className="space-y-2">
@@ -105,7 +112,7 @@ export default function SignUpPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="border-gray-300 focus:border-primary focus:ring-primary"
+                className="border-gray-300 focus:border-primary focus:ring-primary target:text-white"
               />
             </div>
             <div className="space-y-2">
@@ -119,7 +126,7 @@ export default function SignUpPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={8}
-                className="border-gray-300 focus:border-primary focus:ring-primary"
+                className="border-gray-300 focus:border-primary focus:ring-primary target:text-white"
               />
             </div>
           </CardContent>
@@ -131,7 +138,7 @@ export default function SignUpPage() {
             >
               {loading ? "Creating account..." : "Sign Up"}
             </Button >
-            <p className="text-center text-sm text-gray-600">
+            <p className="text-center text-sm text-gray-700">
               Already have an account?{" "}
               <Link
                 href="/sign-in"
