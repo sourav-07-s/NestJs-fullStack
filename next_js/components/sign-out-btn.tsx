@@ -5,17 +5,25 @@ import { Button } from "./ui/button";
 
 export default function SignOutBtn() {
   async function handleSignOut() {
-    await signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          window.location.href = "/sign-in";
+    try {
+      await signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            window.location.replace("/sign-in");
+          },
         },
-      },
-    });
+      });
+    } catch (error) {
+      console.error("Failed to sign out:", error);
+    }
   }
 
   return (
-    <Button variant="ghost" onClick={handleSignOut}>
+    <Button
+      type="button"
+      variant="ghost"
+      onClick={handleSignOut}
+    >
       Log Out
     </Button>
   );
