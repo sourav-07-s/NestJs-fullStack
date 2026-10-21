@@ -1,14 +1,22 @@
-'use client';
+"use client";
 
 import { signOut } from "@/lib/Auth/auth-client";
-import { DropdownMenuItem } from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
 
 export default function SignOutBtn() {
-    return(
-         <DropdownMenuItem onClick={async () => {
-                    await signOut();
-                  }  } >
-                    Log Out
-                  </DropdownMenuItem>
-    )
+  async function handleSignOut() {
+    await signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          window.location.href = "/sign-in";
+        },
+      },
+    });
+  }
+
+  return (
+    <Button variant="ghost" onClick={handleSignOut}>
+      Log Out
+    </Button>
+  );
 }

@@ -57,7 +57,9 @@ export default async function Navbar() {
                       </div>
                     </DropdownMenuLabel>
 
-                    <SignOutBtn />
+                    <SignOutBtn  />
+
+
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
               </DropdownMenu>
