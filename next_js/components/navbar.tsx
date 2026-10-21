@@ -34,32 +34,38 @@ export default async function Navbar() {
             <>
               <Link
                 href="/dashboard"
-                className="text-gray-200 text-lg hover:text-black hover:bg-white/70 rounded-3xl"
+                className="text-gray-200 p-2 text-lg hover:text-black hover:bg-white/70  rounded-3xl"
               >
                 Dashboard
               </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger
-                  render={<Button className="rounded-full" />}
+                  render={<Button  className="rounded-full" />}
                 >
-                  <Avatar>
+                  <Avatar className="h-10 w-10 rounded-full">
                     <AvatarFallback className="font-extrabold text-black">
                       {session.user.name?.charAt(0).toUpperCase() || ""}
                     </AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent
+                  align="end"
+                  className="z-50 w-64 rounded-xl border border-white/10 bg-gray-800 p-2 text-white shadow-xl"
+                >
                   <DropdownMenuGroup>
-                    <DropdownMenuLabel>
-                      <div>
-                        <p>{session.user.name}</p>
-                        <p>{session.user.email}</p>
+                    <DropdownMenuLabel className="px-3 py-3 font-normal">
+                      <div className="flex min-w-0 flex-col gap-2">
+                        <p className="truncate text-lg font-light leading-tight text-white">
+                          {session.user.name}
+                        </p>
+
+                        <p className="break-all text-sm  font-medium leading-relaxed text-gray-300">
+                          {session.user.email}
+                        </p>
                       </div>
                     </DropdownMenuLabel>
 
-                    <SignOutBtn  />
-
-
+                    <SignOutBtn />
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
               </DropdownMenu>

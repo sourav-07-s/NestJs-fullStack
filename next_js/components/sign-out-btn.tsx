@@ -19,12 +19,14 @@ export default function SignOutBtn() {
   }
 
   return (
-    <Button
-      type="button"
-      variant="ghost"
-      onClick={handleSignOut}
-    >
-      Log Out
-    </Button>
+   <Button
+  type="button"
+  
+  variant="ghost"
+  className="w-full justify-start rounded-lg font-medium text-gray-200 bg-gray-600 transition-colors hover:bg-white/10 hover:text-white"
+  onClick={handleSignOut}
+>
+  Log Out
+</Button>
   );
 }
