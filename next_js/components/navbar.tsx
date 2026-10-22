@@ -40,11 +40,13 @@ export default async function Navbar() {
               </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger
-                  render={<Button  className="rounded-full" />}
+                  render={<Button className="rounded-full" />}
                 >
-                  <Avatar className="h-10 w-10 rounded-full">
-                    <AvatarFallback className="font-extrabold text-black">
-                      {session.user.name?.charAt(0).toUpperCase() || ""}
+                  <Avatar className="group h-10 w-10 overflow-visible rounded-full">
+                    <AvatarFallback className="rounded-full font-extrabold text-black">
+                      <span className="inline-block transition-transform duration-200 ease-out group-hover:scale-105 group-hover:text-xl">
+                        {session.user.name?.charAt(0).toUpperCase() || ""}
+                      </span>
                     </AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>

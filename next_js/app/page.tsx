@@ -2,15 +2,17 @@
 
 import ImageTab from "@/components/image-tab";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight   } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/Auth/auth";
+import Features from "@/components/features";
 
+export const instant = false;
 
 export default async function Home() {
 
-    const session = await getSession();
+  const session = await getSession();
 
   if (session?.user) {
     redirect("/dashboard");
@@ -18,8 +20,8 @@ export default async function Home() {
   
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-900 text-white">
-      <main className=" flex-1">
+   <div className="flex min-h-screen w-full flex-col items-stretch bg-gray-900 text-white">
+      <main className=" w-full">
         <section className="container mx-auto px-auto py-32">
           <div className="mx-auto max-w-4xl text-center ">
             <h1 className="text-6xl font-bold mb-6 ">
@@ -48,6 +50,10 @@ export default async function Home() {
         </section>
         {/* Image Tab  for the showing the different features */}
         <ImageTab />
+
+        { /* section for the showing the different features */ }
+
+          <Features/>
 
        
       </main>
