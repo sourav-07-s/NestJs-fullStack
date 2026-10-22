@@ -37,6 +37,7 @@ export default function SignIn() {
       const result = await signIn.email({
         email,
         password,
+        rememberMe : true ,
       });
 
       if (result.error) {
