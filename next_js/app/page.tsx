@@ -4,9 +4,17 @@ import ImageTab from "@/components/image-tab";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getSession } from "@/lib/Auth/auth";
 
 
-export default function Home() {
+export default async function Home() {
+
+    const session = await getSession();
+
+  if (session?.user) {
+    redirect("/dashboard");
+  }
   
 
   return (
