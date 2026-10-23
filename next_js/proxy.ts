@@ -13,6 +13,11 @@ export default async function proxy (request : NextRequest){
              return NextResponse.redirect(new URL('/sign-in', request.url))
        }
 
+      const issignIn = request.nextUrl.pathname.startsWith('/sign-in')
+      const isSignUp = request.nextUrl.pathname.startsWith('/sign-up')
+      if( ( issignIn || isSignUp ) && session?.user) {
+             return NextResponse .redirect(new URL('/dashboard', request.url))
+       }
 
        return NextResponse.next()
 }
