@@ -15,6 +15,7 @@ export default async function proxy (request : NextRequest){
 
       const issignIn = request.nextUrl.pathname.startsWith('/sign-in')
       const isSignUp = request.nextUrl.pathname.startsWith('/sign-up')
+      
       if( ( issignIn || isSignUp ) && session?.user) {
              return NextResponse .redirect(new URL('/dashboard', request.url))
        }
