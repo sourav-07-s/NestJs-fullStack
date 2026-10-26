@@ -29,8 +29,9 @@ export default async function initUserBoard(userId: string) {
     try {
 
         await connectDB() ;
+       
 
-      const existingBoard = await Board.findOne( {userId , name : " JOb Hunt" })
+      const existingBoard = await Board.findOne( {userId , name : "Job Hunt" })
 
       if (existingBoard) {
         return existingBoard ;
@@ -38,10 +39,12 @@ export default async function initUserBoard(userId: string) {
 
        // create a new board for the user
       const newBoard =  await Board.create({
-        name : " JOb Hunt" ,
+        name : "Job Hunt" ,
         userId ,    
         columns : []
           })
+
+          console.log("Created board:", newBoard.toObject());
 
         // create default columns for the new board
 
