@@ -4,6 +4,7 @@ import { getSession } from "@/lib/Auth/auth"
 import { redirect } from "next/navigation";
 import Board from "@/lib/models/board";
 import connectDB from "@/lib/db";
+import KabenBoard from "@/components/kaben -board";
 
  
  export const instant = false;
@@ -36,7 +37,8 @@ const board = await Board.findOne({
                     <h1 className="text-3xl font-bold text-gray-100">{board?.name}</h1>
                     <p className="text-gray-400">Track Your Job Applications</p>
                 </div>
+                <KabenBoard board={board} userId={session.user.id} />
             </div>
-        </div>
+        </div> 
     )
 }
