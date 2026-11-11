@@ -122,10 +122,27 @@
   * {
     @apply border-border outline-ring/50;
   }
- body {
-  @apply min-h-screen bg-gray-900 text-white;
-}
+
   html {
     @apply font-sans;
   }
+
+  body {
+    @apply min-h-screen bg-gray-900 text-white;
+  }
+}
+
+html,
+body,
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
