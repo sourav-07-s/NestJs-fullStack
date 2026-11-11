@@ -2,12 +2,14 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
 import { Plus } from "lucide-react";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 interface createJobDialogProps {
   columnId: string;
@@ -20,7 +22,7 @@ export default function CreateJobDialog({
 }: createJobDialogProps) {
   return (
     <Dialog>
-      <DialogTrigger className="inline-flex h-12 w-28 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-[#F8FAFC] px-3 text-sm font-medium text-slate-900 shadow-none transition-colors hover:border-pink-300 hover:bg-white hover:shadow-none">
+      <DialogTrigger className="inline-flex h-12 w-28 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-[#F8FAFC] px-3 text-sm font-medium text-slate-900 shadow-none transition-colors hover:border-pink-300 hover:bg-white hover:shadow-none hover:cursor-pointer">
         <Plus className="h-4 w-4 text-pink-500" />
         Add Job
       </DialogTrigger>
@@ -37,7 +39,7 @@ export default function CreateJobDialog({
         </DialogHeader>
 
         <form className="mt-5 space-y-5">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 ">
             {/* Company */}
             <div className="space-y-2">
               <label
@@ -99,11 +101,91 @@ export default function CreateJobDialog({
 
               <Input
                 id="salary"
-                placeholder="e.g. ₹15,000/month"
+                placeholder="e.g. ₹1,50,000/month"
                 className="h-11 border border-slate-700 bg-[#111B2A] text-sm text-slate-100 shadow-none transition-colors placeholder:text-slate-400 hover:border-slate-600 hover:shadow-none focus-visible:border-pink-500 focus-visible:ring-1 focus-visible:ring-pink-500/40 focus-visible:ring-offset-0"
               />
             </div>
+
+            {/* Job URL */}
+
+            <div className="space-y-2 sm:col-span-full">
+              <label
+                htmlFor="job-url"
+                className="text-sm font-medium text-slate-100"
+              >
+                Job URL
+              </label>
+
+              <Input
+                id="job-url"
+                placeholder="e.g. https://www.example.com/job"
+                className="h-11 w-full border border-slate-700 bg-[#111B2A] text-sm text-slate-100 shadow-none transition-colors placeholder:text-slate-400 hover:border-slate-600 hover:shadow-none focus-visible:border-pink-500 focus-visible:ring-1 focus-visible:ring-pink-500/40 focus-visible:ring-offset-0"
+              />
+            </div>
+
+            <div className="space-y-2 sm:col-span-full">
+              <label
+                htmlFor="Tags"
+                className="text-sm font-medium text-slate-100"
+              >
+                Tags (comma separated)
+              </label>
+
+              <Input
+                id="Tags"
+                placeholder="e.g. Frontend, Backend, Fullstack , React, Next.js, Node.js, Remote"
+                className="h-11 w-full border border-slate-700 bg-[#111B2A] text-sm text-slate-100 shadow-none transition-colors placeholder:text-slate-400 hover:border-slate-600 hover:shadow-none focus-visible:border-pink-500 focus-visible:ring-1 focus-visible:ring-pink-500/40 focus-visible:ring-offset-0"
+              />
+            </div>
+
+            <div className="space-y-2 sm:col-span-full">
+              <label
+                htmlFor="description"
+                className="text-sm font-medium text-slate-100"
+              >
+                Description
+              </label>
+
+              <Input
+                id="description"
+                placeholder="e.g. We are looking for a talented developer to join our team."
+                className="h-11 w-full border border-slate-700 bg-[#111B2A] text-sm text-slate-100 shadow-none transition-colors placeholder:text-slate-400 hover:border-slate-600 hover:shadow-none focus-visible:border-pink-500 focus-visible:ring-1 focus-visible:ring-pink-500/40 focus-visible:ring-offset-0"
+              />
+            </div>
+
+            <div className="space-y-2 sm:col-span-full">
+              <label
+                htmlFor="job-notes"
+                className="text-sm font-medium text-slate-100"
+              >
+                Notes
+              </label>
+
+              <Input
+                id="job-notes"
+                placeholder="e.g. This is a note about the job."
+                className="h-11 w-full border border-slate-700 bg-[#111B2A] text-sm text-slate-100 shadow-none transition-colors placeholder:text-slate-400 hover:border-slate-600 hover:shadow-none focus-visible:border-pink-500 focus-visible:ring-1 focus-visible:ring-pink-500/40 focus-visible:ring-offset-0"
+              />
+            </div>
           </div>
+
+          <DialogFooter className="mt-6 bg-[#080F1C]flex flex-row justify-end gap-3 border-t border-slate-800 pt-5 sm:justify-end">
+            <Button
+              type="button"
+              variant="outline"
+              className="h-10 rounded-xl border-slate-700 bg-gray-600 px-5 text-slate-300 transition-colors hover:border-slate-600 hover:bg-red-800 hover:text-white"
+            >
+              Cancel
+            </Button>
+
+            <Button
+              type="submit"
+              className="h-10 rounded-xl bg-gray-600 px-5 font-medium text-white shadow-none transition-all hover:bg-green-800"
+            >
+        
+              Add Application
+            </Button>
+          </DialogFooter>
         </form>
       </DialogContent>
     </Dialog>
