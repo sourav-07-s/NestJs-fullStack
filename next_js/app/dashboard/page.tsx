@@ -28,7 +28,7 @@ export default async function dashboard() {
   });
 
   return (
-    <div className="min-h-screen mx-16">
+    <div className="min-h-screen mx-16 overflow-hidden">
       <div className="container mx-auto py-6">
         <div className=" mb-6">
           <h1 className="text-3xl font-bold text-gray-100">{board?.name}</h1>
