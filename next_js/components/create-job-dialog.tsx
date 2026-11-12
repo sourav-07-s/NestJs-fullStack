@@ -1,3 +1,4 @@
+"use client";
 
 import {
   Dialog,
@@ -12,6 +13,7 @@ import {
 import { Plus } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { useState } from "react";
 
 interface createJobDialogProps {
   columnId: string;
@@ -30,16 +32,18 @@ export default function CreateJobDialog({
   columnId,
   boardId,
 }: createJobDialogProps) {
+
+   const[open, setOpen] = useState<boolean>(false);
   return (
-    <Dialog>
+    <Dialog open = {open} onOpenChange={setOpen}> 
       
-<DialogTrigger className="inline-flex h-14.5 w-full items-center justify-start gap-4 rounded-xl border border-dashed border-slate-600/80 bg-transparent px-4 text-base font-medium text-slate-300 shadow-none transition-all hover:border-pink-500/70 hover:bg-pink-500/5 hover:text-white hover:shadow-none">
+<DialogTrigger className="inline-flex h-12 w-full items-center justify-start gap-4 rounded-xl border border-dashed border-slate-600/80 bg-transparent px-4 text-base font-medium text-slate-300 shadow-none transition-all hover:border-pink-500/70 hover:bg-pink-500/5 hover:text-white hover:shadow-none">
   <Plus className="h-7 w-7 text-pink-500" />
   Add Job
 </DialogTrigger>
 
 
-      <DialogContent className="w-[90vw]! max-w-3xl! rounded-2xl border border-slate-700/80 bg-[#080F1C] p-6 text-slate-100 shadow-[0_0_35px_rgba(236,72,153,0.10)]">
+      <DialogContent className="mt-2 w-[90vw]! max-w-3xl! rounded-2xl border border-slate-700/80 bg-[#080F1C] p-6 text-slate-100 shadow-[0_0_35px_rgba(236,72,153,0.10)]">
         {/* Header */}
         <DialogHeader className="shrink-0 space-y-2">
           <DialogTitle className="text-2xl font-bold tracking-tight text-white">
@@ -179,11 +183,13 @@ export default function CreateJobDialog({
           <DialogFooter className="mx-0 mb-0 flex-row justify-end gap-3 border-t border-slate-800 bg-transparent px-0 pt-4 sm:flex-row sm:justify-end">
 
             <Button
+              onClick = {()=> setOpen(false)}
               type="button"
               variant="outline"
               className="h-10 rounded-xl border-slate-700 bg-[#111B2A] px-5 text-slate-300 transition-colors hover:border-slate-600 hover:bg-red-800 hover:text-white"
             >
               Cancel
+
             </Button>
 
             <Button
