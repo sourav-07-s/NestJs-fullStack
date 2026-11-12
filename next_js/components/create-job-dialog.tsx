@@ -20,6 +20,17 @@ interface createJobDialogProps {
   boardId: string;
 }
 
+ const INITIAL_FORM_DATA = {
+  company: "",
+  position: "",
+  location: "",
+  notes: "",
+  salary: "",
+  jobUrl: "",
+  tags: "",
+  description: "",
+};
+
 const inputClass =
   "h-11 w-full rounded-lg border border-slate-700 bg-[#111B2A] px-3 text-sm text-slate-100 shadow-none transition-colors placeholder:text-slate-400 hover:border-slate-600 focus-visible:border-pink-500 focus-visible:ring-1 focus-visible:ring-pink-500/40 focus-visible:ring-offset-0";
 
@@ -34,6 +45,22 @@ export default function CreateJobDialog({
 }: createJobDialogProps) {
 
    const[open, setOpen] = useState<boolean>(false);
+
+    const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+        
+      try {
+
+      }
+      catch (error) {
+        console.error("Error creating job application:", error);
+      }
+
+    }
+
+
   return (
     <Dialog open = {open} onOpenChange={setOpen}> 
       
@@ -56,7 +83,7 @@ export default function CreateJobDialog({
         </DialogHeader>
 
         {/* Form */}
-        <form className="mt-2 flex flex-col gap-5">
+        <form className="mt-2 flex flex-col gap-5" onSubmit = {handleSubmit}>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 
@@ -70,6 +97,8 @@ export default function CreateJobDialog({
                 id="company"
                 name="company"
                 required
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 placeholder="e.g. Google, Microsoft"
                 className={inputClass}
               />
@@ -85,6 +114,8 @@ export default function CreateJobDialog({
                 id="position"
                 name="position"
                 required
+                value={formData.position}
+                onChange={(e) => setFormData({ ...formData, position: e.target.value })}
                 placeholder="e.g. Software Engineer"
                 className={inputClass}
               />
@@ -99,6 +130,8 @@ export default function CreateJobDialog({
               <Input
                 id="location"
                 name="location"
+                value={formData.location}
+                onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                 placeholder="e.g. Remote, India"
                 className={inputClass}
               />
@@ -113,6 +146,8 @@ export default function CreateJobDialog({
               <Input
                 id="salary"
                 name="salary"
+                value={formData.salary}
+                onChange={(e) => setFormData({ ...formData, salary: e.target.value })}
                 placeholder="e.g. ₹1,50,000/month"
                 className={inputClass}
               />
@@ -129,6 +164,8 @@ export default function CreateJobDialog({
                 name="jobUrl"
                 type="url"
                 placeholder="e.g. https://www.example.com/job"
+                value={formData.jobUrl}
+                onChange={(e) => setFormData({ ...formData, jobUrl: e.target.value })}
                 className={inputClass}
               />
             </div>
@@ -144,6 +181,8 @@ export default function CreateJobDialog({
                 name="tags"
                 placeholder="Frontend, Backend, Fullstack, React, Next.js, Node.js, Remote"
                 className={inputClass}
+                value={formData.tags}
+                onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
               />
             </div>
 
@@ -157,6 +196,8 @@ export default function CreateJobDialog({
                 id="description"
                 name="description"
                 rows={3}
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 placeholder="e.g. We are looking for a talented developer to join our team."
                 className={textareaClass}
               />
@@ -172,6 +213,8 @@ export default function CreateJobDialog({
                 id="job-notes"
                 name="notes"
                 rows={3}
+                value={formData.notes}
+                onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                 placeholder="e.g. Interview details, recruiter contact, follow-up dates..."
                 className={textareaClass}
               />
